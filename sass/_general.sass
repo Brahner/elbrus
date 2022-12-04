@@ -34,3 +34,36 @@
 	color: $white-color
 	font-weight: 700
 	font-size: 14px
+	&:hover
+		opacity: .8
+.promo
+	padding: 95px 0 56px 0
+	&__title
+		font-weight: 700
+		font-size: 36px
+		line-height: 49px
+	&__wrap
+		position: relative
+		height: 540px
+		padding-top: 47px
+.slider
+	
+	&__items
+		overflow: hidden
+	&__item
+		display: none
+		height: 480px
+		&--active
+			display: block
+	&__indicators
+		height: 195px
+		position: absolute
+		right: 0
+		top: 35%
+	&__indicator
+		width: 15px
+		height: 15px
+		background-color: $grey-color
+		border-radius: 50%
+		&--active
+			background-color: $grey-color-active
