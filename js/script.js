@@ -5,17 +5,19 @@ slides = document.querySelector('slider__items'),
 slider = '.slider__indicator',
 indicatorActive = 'slider__indicator--active',
 sliderActive = 'slider__item--active',
+sliderCount = document.querySelector('.slider__count', 'span'),
 num = indicators.children.length,
 timerValue = 2000;
 let indexSlider = 0;
 
 let intervalId = setInterval(function() {
-	changeIndex();
+	changeSlider();
 	}, timerValue);
 
-	function changeIndex(){
+	function changeSlider(){
+		changeSliderCount();
 		if(indexSlider < num){
-		console.log(indexSlider); //!
+		//console.log(indexSlider); //!
 		indicators.children[indexSlider].classList.add(`${indicatorActive}`);
 		document.querySelector(`#slide-${indexSlider}`).classList.add(`${sliderActive}`);
 		if(indexSlider == 0){
@@ -34,20 +36,19 @@ let intervalId = setInterval(function() {
 }
 
 function readyLoad() {
-	indicators.addEventListener('click', function (event){
-		if(event.target.closest(`${slider}`)){
-			let index = event.target.id;
+	indicators.addEventListener('click', function (e){
+		if(e.target.closest(`${slider}`)){
+			let index = e.target.id;
 			indexSlider = index;
-
+			clearInterval(intervalId);
+			intervalId = setInterval(function() {
+				changeSlider();
+			}, timerValue);
 			removeClassSlider();
 
-			clearInterval(intervalId);
 
-			intervalId = setInterval(function() {
-				changeIndex();
-			}, timerValue);
 			
-			event.target.classList.toggle(`${indicatorActive}`);
+			e.target.classList.toggle(`${indicatorActive}`);
 			document.querySelector(`#slide-${index}`).classList.add(`${sliderActive}`);
 		}
 	});
@@ -58,4 +59,9 @@ function removeClassSlider() {
 		indicators.children[i].classList.remove(`${indicatorActive}`);
 		document.querySelector(`#slide-${i}`).classList.remove(`${sliderActive}`);
 	}
+}
+
+function changeSliderCount(){
+	let numCount = +indexSlider + 1;
+	sliderCount.textContent = `${numCount}/${num}`;
 }
