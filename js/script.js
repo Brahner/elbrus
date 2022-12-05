@@ -17,7 +17,6 @@ let intervalId = setInterval(function() {
 	function changeSlider(){
 		changeSliderCount();
 		if(indexSlider < num){
-		//console.log(indexSlider); //!
 		indicators.children[indexSlider].classList.add(`${indicatorActive}`);
 		document.querySelector(`#slide-${indexSlider}`).classList.add(`${sliderActive}`);
 		if(indexSlider == 0){
