@@ -11,18 +11,18 @@ window.addEventListener('load', ()=>{
 	const sliderActiveClass = 'slider__item--active';
 	
 	let indexSlider = 1;
+	let timer = null;
 
 	indicators.forEach((el) => {
 		el.addEventListener('click', (e) => {
 			indexSlider = +e.target.id;
-			
+			if(timer){
+				clearTimeout(timer);
+			}
+			changeSlider();
 		});
 	});
 
-	let intervalId = setInterval(() => {
-		changeSlider();
-		
-	}, TIMER_VALUE);
 
 
 	function changeSlider() {
@@ -49,14 +49,16 @@ window.addEventListener('load', ()=>{
 		if (indexSlider > countSlides) {
 			indexSlider = 1;
 		}
+
+		timer = setTimeout(changeSlider, TIMER_VALUE);
 	
 	}
 
 	function changeSliderCount() {
-		let numCount = indexSlider;
-		titleSliderEl.textContent = `${numCount}/${countSlides}`;
+		titleSliderEl.textContent = `${indexSlider}/${countSlides}`;
 	}
 	
+	changeSlider();
 });
 
 
