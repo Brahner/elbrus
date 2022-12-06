@@ -13,7 +13,8 @@ window.addEventListener('load', ()=>{
 	let indexSlider = 1;
 	let timer = null;
 
-	indicators.forEach((el) => {
+
+	indicators.forEach((el) => { //! при клике сбрасываем интервал и начинаем слайдер с места клика
 		el.addEventListener('click', (e) => {
 			indexSlider = +e.target.id;
 			if(timer){
@@ -24,9 +25,8 @@ window.addEventListener('load', ()=>{
 	});
 
 
-
 	function changeSlider() {
-		indicators.forEach((el) => {
+		indicators.forEach((el) => { //! Меняем индикаторы слайдера
 			if (el.getAttribute('id') == indexSlider) {
 				el.classList.add(`${indicatorActiveClass}`);
 			} else {
@@ -34,7 +34,7 @@ window.addEventListener('load', ()=>{
 			}
 		});
 	
-		slides.forEach((el) => {
+		slides.forEach((el) => { //! Меняем слайдеры
 			if (el.getAttribute('id') == `slide-${indexSlider}`) {
 				el.classList.add(`${sliderActiveClass}`);
 			} else {
@@ -42,45 +42,16 @@ window.addEventListener('load', ()=>{
 			}
 		});
 		
-		changeSliderCount();
-
+		titleSliderEl.textContent = `${indexSlider}/${countSlides}`; //! Меняем счетчик
 		indexSlider++;
 	
 		if (indexSlider > countSlides) {
 			indexSlider = 1;
 		}
 
-		timer = setTimeout(changeSlider, TIMER_VALUE);
-	
+		timer = setTimeout(changeSlider, TIMER_VALUE); //! Через интервал меняем слайдер
 	}
 
-	function changeSliderCount() {
-		titleSliderEl.textContent = `${indexSlider}/${countSlides}`;
-	}
-	
+
 	changeSlider();
 });
-
-
-// let intervalId1
-
-// function changeBar() {
-// 	clearInterval(intervalId1);
-// 	bar.classList.add('slider__bar--active');
-	
-// 	intervalId1 = setInterval(() => {
-// 		bar.classList.remove('slider__bar--active');
-// 	}, 2800); 
-// } 
-
-
-// function readyLoad() {
-	// indicators.addEventListener('click', (e) => {
-	// 	if(e.target.closest(`${slider}`)){
-	// 		indexSlider = +e.target.id;
-	// 		changeSliderCount();
-	// 		e.target.classList.toggle(`${indicatorActiveClass}`);
-	// 		document.querySelector(`#slide-${indexSlider}`).classList.add(`${sliderActiveClass}`);
-	// 	}
-	// });
-// }
