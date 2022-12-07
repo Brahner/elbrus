@@ -44,7 +44,7 @@ window.addEventListener('load', ()=>{
 		
 		titleSliderEl.textContent = `${indexSlider}/${countSlides}`; //! Меняем счетчик
 		indexSlider++;
-	
+		
 		if (indexSlider > countSlides) {
 			indexSlider = 1;
 		}
