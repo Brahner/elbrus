@@ -1,6 +1,8 @@
 .header
-	padding-top: 30px
+	padding: 30px 0 20px
 	position: fixed
+	z-index: 99
+	background-color: $white-color
 	width: 100%
 	&__logo
 		width: 120px
@@ -37,7 +39,8 @@
 	&:hover
 		opacity: .8
 .promo
-	padding: 95px 0 56px 0
+	padding: 95px 0 95px
+	background-color: $white-color
 	&__title
 		font-weight: 700
 		font-size: 36px
@@ -48,11 +51,11 @@
 		padding-top: 47px
 	&__plants
 		position: absolute
-		width: 50%
+		width: 60%
 		&:nth-child(1)
 			z-index: 2
 			bottom: -5%
-			left: -20%
+			left: -45%
 		&:nth-child(2)
 			bottom: 5%
 			right: -12%
@@ -78,6 +81,7 @@
 		height: 15px
 		background-color: $grey-color
 		border-radius: 50%
+		cursor: pointer
 		&--active
 			background-color: $grey-color-active
 	&__count
@@ -94,4 +98,51 @@
 		height: 4px
 		width: 0%
 		background-color: $main-color
-
+.about
+	padding-top: 160px
+	box-shadow: inset 0px 15px 40px rgba(25, 70, 186, 0.1)
+	&__title
+		font-weight: 700
+		font-size: 70px
+		color: $main-color
+	&__desc
+		margin-top: 106px
+		font-weight: 400
+		font-size: 14px
+		line-height: 25px
+.cards
+	&__wrap
+		position: relative
+		padding-top: 26px
+	&__count
+		font-family: geometria
+		font-size: 15px
+		color: $grey-color
+		position: absolute
+		left: -7%
+	&__loader
+		height: 4px
+		width: 484px
+		background-color: $grey-color-active
+	&__btn
+		height: 43px
+		width: 43px
+		border: 2px solid $main-color
+		border-radius: 50%
+		cursor: pointer
+	&__items
+		margin-top: 70px
+	&__item
+		min-width: 295px
+		height: 265px
+		padding: 30px 20px 38px
+		margin: 0 10px
+		box-shadow: 0px 5px 20px rgba(25, 70, 186, 0.2)
+	&__img
+		width: 86px
+		height: 86px
+	&__text
+		font-weight: 600
+		font-size: 18px
+		line-height: 27px
+		margin-top: 30px
