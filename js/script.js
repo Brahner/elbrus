@@ -4,6 +4,10 @@ window.addEventListener('load', ()=>{
 	const indicators = document.querySelectorAll('.slider__indicator');
 	const slides = document.querySelectorAll('.slider__item');
 	const titleSliderEl = document.querySelector('.slider__count', 'span');
+	const sliderBar = document.querySelector('.slider__bar-first');
+	const sliderBarSecond = document.querySelector('.slider__bar-second');
+
+
 	
 	const countSlides = indicators.length;
 	
@@ -26,6 +30,9 @@ window.addEventListener('load', ()=>{
 
 
 	function changeSlider() {
+		sliderBar.classList.toggle('slider__bar-first--active');
+		sliderBarSecond.classList.toggle('slider__bar-second--active');
+
 		indicators.forEach((el) => { //! Меняем индикаторы слайдера
 			if (el.getAttribute('id') == indexSlider) {
 				el.classList.add(`${indicatorActiveClass}`);

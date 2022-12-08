@@ -78,7 +78,8 @@
 								<span>1/4</span>
 							</div>
 							<div class="slider__loader">
-								<div class="slider__bar"></div>
+								<div class="slider__bar-first"></div>
+								<div class="slider__bar-second slider__bar-second--active"></div>
 							</div>
 						</div>
 					</div>
@@ -87,54 +88,87 @@
 		</div>
 	</section>
 
-	<section class="about overflow-hidden">
-		<div class="container">
-			<div class="row">
-				<div class="col-5">
-					<h2 class="about__title">Немного о нас</h2>
-					<div class="about__desc">
-						ООО "Эльбрусская прохлада"- отптовые продажи безалкогольных напитков от производителя. Широкий ассортимент лимонадов, минеральной воды,разных сементов. Артезианская питьевая вода,добывается из скважины глубиной 230 м. Автоматизированная система розлива исключает любые загрязнения в процессе производства, а отсутствие поблизости крупных предприятий и сельхозугодий гарантирует чистоту добываемой воды. 
-					</div>
-				</div>
-				<div class="col-6 ms-auto">
-					<div class="cards">
-						<div class="cards__wrap d-flex justify-content-between align-items-center">
-							<div class="cards__count">1/4</div>
-							<div class="cards__loader"></div>
-							<div class="cards__btn d-flex justify-content-center align-items-center"><img src="./img/icons/arrow-left.svg" alt=""></div>
-							<div class="cards__btn d-flex justify-content-center align-items-center"><img src="./img/icons/arrow-rigth.svg" alt=""></div>
+	<section class="features overflow-hidden">
+		<div class="about">
+			<div class="container">
+				<div class="row">
+					<div class="col-5">
+						<h2 class="about__title">Немного о нас</h2>
+						<div class="about__desc">
+							ООО "Эльбрусская прохлада"- отптовые продажи безалкогольных напитков от производителя. Широкий ассортимент лимонадов, минеральной воды,разных сементов. Артезианская питьевая вода,добывается из скважины глубиной 230 м. Автоматизированная система розлива исключает любые загрязнения в процессе производства, а отсутствие поблизости крупных предприятий и сельхозугодий гарантирует чистоту добываемой воды. 
 						</div>
 					</div>
-						<div class="cards__items d-flex justify-content-between">
-							<div class="cards__item">
-								<img class="cards__img" src="./img/icons/discount.svg" alt="">
-								<p class="cards__text">
-									Индивидуальные скидки в зависимости от объема покупки
-								</p>
+					<div class="col-6 ms-auto">
+						<div class="cards">
+							<div class="cards__wrap d-flex justify-content-between align-items-center">
+								<div class="cards__count">1/4</div>
+								<div class="cards__loader"></div>
+								<div class="cards__btn d-flex justify-content-center align-items-center">
+									<img src="./img/icons/arrow-left.svg" alt="">
+								</div>
+								<div class="cards__btn d-flex justify-content-center align-items-center">
+									<img src="./img/icons/arrow-rigth.svg" alt="">
+								</div>
 							</div>
-							<div class="cards__item">
-								<img class="cards__img" src="./img/icons/discount.svg" alt="">
-								<p class="cards__text">
-									Индивидуальные скидки в зависимости от объема покупки
-								</p>
-							</div>
-							<div class="cards__item">
-								<img class="cards__img" src="./img/icons/discount.svg" alt="">
-								<p class="cards__text">
-									Индивидуальные скидки в зависимости от объема покупки
-								</p>
-							</div>
-							<div class="cards__item">
-								<img class="cards__img" src="./img/icons/discount.svg" alt="">
-								<p class="cards__text">
-									Индивидуальные скидки в зависимости от объема покупки
-								</p>
+							<div class="cards__items d-flex justify-content-between">
+								<div class="cards__item">
+									<img class="cards__img" src="./img/icons/discount.svg" alt="">
+									<p class="cards__text">
+										Индивидуальные скидки в зависимости от объема покупки
+									</p>
+								</div>
+								<div class="cards__item">
+									<img class="cards__img" src="./img/icons/discount.svg" alt="">
+									<p class="cards__text">
+										Индивидуальные скидки в зависимости от объема покупки
+									</p>
+								</div>
+								<div class="cards__item">
+									<img class="cards__img" src="./img/icons/discount.svg" alt="">
+									<p class="cards__text">
+										Индивидуальные скидки в зависимости от объема покупки
+									</p>
+								</div>
+								<div class="cards__item">
+									<img class="cards__img" src="./img/icons/discount.svg" alt="">
+									<p class="cards__text">
+										Индивидуальные скидки в зависимости от объема покупки
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 		</div>
+
+		<div class="price">
+			<div class="container ms-0 ps-0">
+				<div class="row g-0">
+					<div class="col-6">
+						<div class="price__box">
+							<h2 class="price__title">
+								Получить оптовый прайс
+							</h2>
+							<p class="price__subtitle">
+								Оставьте заявку и получите прайс на почту
+							</p>
+						</div>
+					</div>
+					<div class="col-5 ms-auto d-flex align-items-center">
+						<form action="" class="price__form d-flex flex-column w-100">
+							<input type="text" class="price__input" placeholder="Имя" name="name" id="name">
+							<input type="text" class="price__input" placeholder="E-mail" name="email" id="email">
+							<button class="price__btn" type="submit">Отправить</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</section>
+
+
 
 	<script src="./js/script.js"></script>
 </body>
