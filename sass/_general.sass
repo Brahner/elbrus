@@ -103,7 +103,7 @@
 			width: 100%
 			transition: width 3s
 .features
-	box-shadow: inset 0px 15px 40px rgba(25, 70, 186, 0.1)
+	+shadow
 .about
 	margin: 120px 0
 	&__title
@@ -156,8 +156,7 @@
 		padding: 90px 105px 105px 80px
 		background: $main-color url("../img/icons/vector.svg") no-repeat right -30% top -300%
 	&__title
-		font-weight: 700
-		font-size: 72px
+		+title-big
 		line-height: 75px
 		color: $white-color
 	&__subtitle
@@ -180,3 +179,28 @@
 		width: 290px
 		margin-top: 35px
 		+btn
+.products
+	padding: 80px 0
+	+shadow
+	&__title
+		+title-big
+		color: $main-color
+	&__wrap
+		margin-top: 70px
+	&__item
+		height: 310px
+		margin-bottom: 120px
+	&__img
+		height: 100%
+		width: auto
+	&__subtitle
+		margin-top: 32px
+		color: $black-color
+		&:hover
+			color: $main-color
+	&__btn
+		width: 290px
+		+btn
+		&:hover
+			color: $white-color
+
