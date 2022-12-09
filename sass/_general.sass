@@ -4,25 +4,37 @@
 	z-index: 99
 	background-color: $white-color
 	width: 100%
-	&__logo
-		width: 120px
-		text-align: center
-		& a
-			font-family: geometria
-			color: $black-color
-			font-weight: 700
-			font-size: 18px
-			line-height: 23px
+.logo
+	width: 120px
+	text-align: center
+	&__link
+		font-family: geometria
+		color: $black-color
+		font-weight: 700
+		font-size: 18px
+		line-height: 23px
+		&:hover
+			color: $main-color
+		&--white
+			color: $white-color
+			&:hover
+				color: $white-color
+				opacity: .8
 .menu
 	list-style: none
 	width: 100%
 	&__item
 		font-weight: 600
 		font-size: 14px
-		& a
+		&_link
 			color: $grey-color
-		& a:hover
-			color: $main-color
+			&:hover
+				color: $main-color
+			&--white
+				color: $white-color
+				&:hover
+					color: $white-color
+					opacity: .8
 .header__phone
 	font-weight: 600
 	font-size: 14px
@@ -55,7 +67,6 @@
 			top: -5%
 			left: -5%
 .slider
-	
 	&__items
 		overflow: hidden
 	&__item
@@ -246,6 +257,23 @@
 	&__item
 		&:hover
 			opacity: .8
+.maps
+	+shadow
+.footer
+	padding: 40px 0
+	background-color: $main-color
+	&__text
+		font-weight: 400
+		font-size: 14px
+		color: $white-color
+		margin-bottom: 7px
+	&__link
+		font-weight: 700
+		color: $white-color
+		&:hover
+			color: $white-color
+			opacity: .8
+
 
 
 
