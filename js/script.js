@@ -1,6 +1,7 @@
 window.addEventListener('load', ()=>{
 	const TIMER_VALUE = 3000;
 	
+	const header = document.querySelector('.header');
 	const indicators = document.querySelectorAll('.slider__indicator');
 	const slides = document.querySelectorAll('.slider__item');
 	const titleSliderEl = document.querySelector('.slider__count', 'span');
@@ -12,6 +13,7 @@ window.addEventListener('load', ()=>{
 	const countSlides = indicators.length;
 	const countCard = card.length;
 	
+	const headerActiveClass = 'header--active';
 	const indicatorActiveClass = 'slider__indicator--active';
 	const sliderActiveClass = 'slider__item--active';
 	const cardActiveClass = 'cards__item--active';
@@ -62,6 +64,15 @@ window.addEventListener('load', ()=>{
 
 		timer = setTimeout(changeSlider, TIMER_VALUE); //! Через интервал меняем слайдер
 	}
+
+
+	document.addEventListener('wheel', function(e) { //! скрываем/показываем header при скролле
+		if(e.deltaY < 0 && window.pageYOffset > 730){
+			header.classList.add(`${headerActiveClass}`);
+		} else {
+			header.classList.remove(`${headerActiveClass}`);
+		}
+	});
 
 	changeSlider();
 });
