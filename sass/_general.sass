@@ -8,6 +8,7 @@
 		padding-top: 20px
 		position: fixed
 		+box-shadow
+		animation: header-show .2s ease-out
 .logo
 	width: 120px
 	text-align: center
@@ -289,6 +290,12 @@
 		&:hover
 			color: $white-color
 			opacity: .8
+@keyframes header-show
+	from
+		top: -100%
+	to 
+		top: 0
+
 
 
 
