@@ -5,7 +5,7 @@ window.addEventListener('load', ()=>{
 	const indicators = document.querySelectorAll('.slider__indicator');
 	const slides = document.querySelectorAll('.slider__item');
 	const titleSliderEl = document.querySelector('.slider__count', 'span');
-	const sliderBar = document.querySelector('.slider__bar-first');
+	const sliderBarFirst = document.querySelector('.slider__bar-first');
 	const sliderBarSecond = document.querySelector('.slider__bar-second');
 	const cards = document.querySelector('.cards__items');
 	const card = document.querySelectorAll('.cards__item');
@@ -16,8 +16,10 @@ window.addEventListener('load', ()=>{
 	const headerActiveClass = 'header--active';
 	const indicatorActiveClass = 'slider__indicator--active';
 	const sliderActiveClass = 'slider__item--active';
+	const sliderBarFirstActive = 'slider__bar-first--active';
+	const sliderBarSecondActive = 'slider__bar-second--active';
 	const cardActiveClass = 'cards__item--active';
-	
+
 	let indexSlider = 1;
 	let indexCard = 0;
 	let timer = null;
@@ -36,8 +38,8 @@ window.addEventListener('load', ()=>{
 
 
 	function changeSlider() {
-		sliderBar.classList.toggle('slider__bar-first--active');
-		sliderBarSecond.classList.toggle('slider__bar-second--active');
+		sliderBarFirst.classList.toggle(`${sliderBarFirstActive}`);
+		sliderBarSecond.classList.toggle(`${sliderBarSecondActive}`);
 
 		indicators.forEach((el) => { //! Меняем индикаторы слайдера
 			if (el.getAttribute('id') == indexSlider) {
