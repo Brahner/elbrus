@@ -100,9 +100,9 @@
 		</div>
 	</section>
 
-	<section class="features overflow-hidden">
+	<section class="features">
 		<div class="about">
-			<div class="container">
+			<div class="container overflow-hidden">
 				<div class="row">
 					<div class="col-5">
 						<h2 class="about__title">Немного о нас</h2>
@@ -123,28 +123,28 @@
 								</div>
 							</div>
 							<div class="cards__items d-flex justify-content-between">
-								<div class="cards__item">
+								<div class="cards__item animate__animated animate__fadeInRight cards__item--active" id="card-0">
 									<img class="cards__img" src="./img/icons/discount.svg" alt="">
 									<p class="cards__text">
-										Индивидуальные скидки в зависимости от объема покупки
+										0 Индивидуальные скидки в зависимости от объема покупки
 									</p>
 								</div>
-								<div class="cards__item">
+								<div class="cards__item animate__animated animate__fadeInRight cards__item--active" id="card-1">
 									<img class="cards__img" src="./img/icons/discount.svg" alt="">
 									<p class="cards__text">
-										Индивидуальные скидки в зависимости от объема покупки
+										1 Индивидуальные скидки в зависимости от объема покупки
 									</p>
 								</div>
-								<div class="cards__item">
+								<div class="cards__item animate__animated animate__fadeInRight cards__item--active" id="card-2">
 									<img class="cards__img" src="./img/icons/discount.svg" alt="">
 									<p class="cards__text">
-										Индивидуальные скидки в зависимости от объема покупки
+										2 Индивидуальные скидки в зависимости от объема покупки
 									</p>
 								</div>
-								<div class="cards__item">
+								<div class="cards__item animate__animated animate__fadeInRight cards__item--active" id="card-3">
 									<img class="cards__img" src="./img/icons/discount.svg" alt="">
 									<p class="cards__text">
-										Индивидуальные скидки в зависимости от объема покупки
+										3 Индивидуальные скидки в зависимости от объема покупки
 									</p>
 								</div>
 							</div>
@@ -155,19 +155,21 @@
 		</div>
 
 		<div class="price">
-			<div class="container ms-0 ps-0">
-				<div class="row g-0">
-					<div class="col-6">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-6 px-0">
 						<div class="price__box">
-							<h2 class="price__title">
-								Получить оптовый прайс
-							</h2>
-							<p class="price__subtitle">
-								Оставьте заявку и получите прайс на почту
-							</p>
+							<div class="price__container ms-auto">
+								<h2 class="price__title">
+									Получить оптовый прайс
+								</h2>
+								<p class="price__subtitle">
+									Оставьте заявку и получите прайс на почту
+								</p>
+							</div>
 						</div>
 					</div>
-					<div class="col-5 ms-auto d-flex align-items-center">
+					<div class="col-6 d-flex align-items-center">
 						<form action="" class="price__form d-flex flex-column w-100">
 							<input type="text" class="price__input" placeholder="Имя" name="name" id="name">
 							<input type="text" class="price__input" placeholder="E-mail" name="email" id="email">

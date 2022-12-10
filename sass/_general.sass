@@ -4,6 +4,8 @@
 	z-index: 99
 	background-color: $white-color
 	width: 100%
+	&--active
+		+box-shadow
 .logo
 	width: 120px
 	text-align: center
@@ -114,9 +116,10 @@
 			width: 100%
 			transition: width 3s
 .features
+	padding-top: 160px
 	+shadow
 .about
-	margin: 120px 0
+	margin-bottom: 120px
 	&__title
 		font-weight: 700
 		font-size: 70px
@@ -127,6 +130,7 @@
 		font-size: 14px
 		line-height: 25px
 .cards
+	padding-bottom: 20px
 	&__wrap
 		position: relative
 		padding-top: 26px
@@ -149,11 +153,16 @@
 	&__items
 		margin-top: 70px
 	&__item
+		position: absolute
+		display: none
 		min-width: 295px
 		height: 265px
 		padding: 30px 20px 38px
 		margin: 0 10px
-		box-shadow: 0px 5px 20px rgba(25, 70, 186, 0.2)
+		+box-shadow
+		&--active
+			position: relative
+			display: block
 	&__img
 		width: 86px
 		height: 86px
@@ -164,7 +173,7 @@
 		margin-top: 30px
 .price
 	&__box
-		padding: 90px 105px 105px 80px
+		padding: 90px 105px 105px 0
 		background: $main-color url("../img/icons/vector.svg") no-repeat right -30% top -300%
 	&__title
 		+title-big
@@ -176,6 +185,8 @@
 		color: $white-color
 		margin-top: 45px
 	&__form
+		max-width: 650px
+		padding-left: 105px
 	&__input
 		height: 40px
 		padding: 10px 20px 15px
@@ -190,6 +201,9 @@
 		width: 290px
 		margin-top: 35px
 		+btn
+	&__container
+		max-width: 390px
+		margin-right: 150px
 .products
 	padding: 80px 0
 	+shadow
