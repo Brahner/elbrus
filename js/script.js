@@ -25,6 +25,10 @@ window.addEventListener('load', ()=>{
 	let timer = null;
 	let timerCard = null;
 
+	// const container = document.querySelector('.price__container');
+	// const box = document.querySelector('.price__bg');
+	// box.style.height = `${container.clientHeight}px`;
+
 
 	indicators.forEach((el) => { //! при клике сбрасываем интервал и начинаем слайдер с места клика
 		el.addEventListener('click', (e) => {

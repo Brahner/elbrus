@@ -26,8 +26,11 @@
 				color: $white-color
 				opacity: .8
 .menu
-	list-style: none
-	width: 100%
+	&__items
+		width: 100%
+		list-style: none
+		padding-left: 0
+		margin-bottom: 0
 	&__item
 		font-weight: 600
 		font-size: 14px
@@ -56,7 +59,6 @@
 		line-height: 49px
 	&__wrap
 		position: relative
-		height: 540px
 		padding-top: 47px
 	&__plants
 		position: absolute
@@ -119,7 +121,7 @@
 			width: 100%
 			transition: width 3s
 .features
-	padding-top: 160px
+	padding-top: 120px
 	+shadow
 .about
 	margin-bottom: 120px
@@ -128,6 +130,7 @@
 		font-size: 70px
 		color: $main-color
 	&__desc
+		padding-right: 80px
 		margin-top: 106px
 		font-weight: 400
 		font-size: 14px
@@ -141,11 +144,10 @@
 		font-family: geometria
 		font-size: 15px
 		color: $grey-color
-		position: absolute
-		left: -7%
 	&__loader
 		height: 4px
-		width: 484px
+		width: 70%
+		max-width: 485px
 		background-color: $grey-color-active
 	&__btn
 		height: 43px
@@ -168,16 +170,25 @@
 			display: block
 	&__img
 		width: 86px
-		height: 86px
+		height: auto
 	&__text
 		font-weight: 600
 		font-size: 18px
 		line-height: 27px
 		margin-top: 30px
 .price
-	&__box
-		padding: 90px 105px 105px 0
+	&__bg
 		background: $main-color url("../img/icons/vector.svg") no-repeat right -30% top -300%
+		padding: 90px 105px 105px 0
+		&::before
+			content: ''
+			position: absolute
+			top: 0
+			left: -100%
+			z-index: -1
+			background-color: $main-color
+			width: calc(100% + 2px)
+			height: 100%
 	&__title
 		+title-big
 		line-height: 75px
@@ -188,8 +199,8 @@
 		color: $white-color
 		margin-top: 45px
 	&__form
-		max-width: 650px
-		padding-left: 105px
+		max-width: 505px
+		margin-left: auto
 	&__input
 		height: 40px
 		padding: 10px 20px 15px
@@ -201,12 +212,9 @@
 		&:focus
 			outline: none
 	&__btn
-		width: 290px
+		max-width: 290px
 		margin-top: 35px
 		+btn
-	&__container
-		max-width: 390px
-		margin-right: 150px
 .products
 	padding: 80px 0
 	+shadow
@@ -240,12 +248,13 @@
 	&__wrap
 		margin-top: 112px
 	&__item
-		width: 190px
+		max-width: 100%
 	&__img
-		width: 100%
+		max-width: 70%
 	&__subtitle
 		text-align: center
 		margin-top: 34px
+		padding: 0 20px
 		font-weight: 600
 		font-size: 18px
 		line-height: 27px
