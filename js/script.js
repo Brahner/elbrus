@@ -2,6 +2,10 @@ window.addEventListener('load', ()=>{
 	const TIMER_VALUE = 3000;
 	
 	const header = document.querySelector('.header');
+	const burger = document.querySelector('.burger');
+	const overlay = document.querySelector('.overlay');
+	const navigate = document.querySelector('.navigate');
+	const close = document.querySelector('.close');
 	const indicators = document.querySelectorAll('.slider__indicator');
 	const slides = document.querySelectorAll('.slider__item');
 	const titleSliderEl = document.querySelector('.slider__count', 'span');
@@ -20,17 +24,16 @@ window.addEventListener('load', ()=>{
 	const sliderBarSecondActive = 'slider__bar-second--active';
 	const cardActiveClass = 'cards__item--active';
 
+	let none = 'd-none';
+	let activeId = 'active';
 	let indexSlider = 1;
 	let indexCard = 0;
 	let timer = null;
 	let timerCard = null;
 
-	// const container = document.querySelector('.price__container');
-	// const box = document.querySelector('.price__bg');
-	// box.style.height = `${container.clientHeight}px`;
 
-
-	indicators.forEach((el) => { //! при клике сбрасываем интервал и начинаем слайдер с места клика
+	//! при клике сбрасываем интервал и начинаем слайдер с места клика
+	indicators.forEach((el) => {
 		el.addEventListener('click', (e) => {
 			indexSlider = +e.target.id;
 			if(timer){
@@ -44,40 +47,62 @@ window.addEventListener('load', ()=>{
 	function changeSlider() {
 		sliderBarFirst.classList.toggle(`${sliderBarFirstActive}`);
 		sliderBarSecond.classList.toggle(`${sliderBarSecondActive}`);
-
-		indicators.forEach((el) => { //! Меняем индикаторы слайдера
+	//! Меняем индикаторы слайдера
+		indicators.forEach((el) => {
 			if (el.getAttribute('id') == indexSlider) {
 				el.classList.add(`${indicatorActiveClass}`);
 			} else {
 				el.classList.remove(`${indicatorActiveClass}`);
 			}
 		});
-	
-		slides.forEach((el) => { //! Меняем слайдеры
+	//! Меняем слайдеры
+		slides.forEach((el) => {
 			if (el.getAttribute('id') == `slide-${indexSlider}`) {
 				el.classList.add(`${sliderActiveClass}`);
 			} else {
 				el.classList.remove(`${sliderActiveClass}`);
 			}
 		});
-		
-		titleSliderEl.textContent = `${indexSlider}/${countSlides}`; //! Меняем счетчик
+	//! Меняем счетчик
+		titleSliderEl.textContent = `${indexSlider}/${countSlides}`;
 		indexSlider++;
 		
 		if (indexSlider > countSlides) {
 			indexSlider = 1;
 		}
-
-		timer = setTimeout(changeSlider, TIMER_VALUE); //! Через интервал меняем слайдер
+	//! Через интервал меняем слайдер
+		timer = setTimeout(changeSlider, TIMER_VALUE);
 	}
 
-
-	document.addEventListener('wheel', function(e) { //! скрываем/показываем header при скролле
+	//! скрываем/показываем header при скролле
+	document.addEventListener('wheel', function(e) {
 		if(e.deltaY < 0 && window.pageYOffset > 730){
 			header.classList.add(`${headerActiveClass}`);
 		} else {
 			header.classList.remove(`${headerActiveClass}`);
 		}
+	});
+
+
+	//! мобильное меню
+	header.addEventListener('click', function(e) {
+		if(e.target == burger){
+			overlay.classList.toggle(`${none}`);
+			navigate.classList.toggle(`${none}`);
+			navigate.setAttribute('id', activeId);
+		}
+
+		if(e.target != burger && e.target != navigate && navigate.id === activeId){
+			navigate.removeAttribute('id');
+			overlay.classList.toggle(`${none}`);
+			navigate.classList.toggle(`${none}`);
+		}
+
+		close.addEventListener('click', () => {
+			navigate.removeAttribute('id');
+			overlay.classList.toggle(`${none}`);
+			navigate.classList.toggle(`${none}`);
+		});
 	});
 
 	changeSlider();
