@@ -30,29 +30,27 @@ window.addEventListener('load', ()=>{
 	let indexCard = 0;
 	let timer = null;
 	let timerCard = null;
+	let lastScrollPage;
 
 
 	function changeCard () {
-		let cardParent = document.querySelector('.cards__items');
-		cards.forEach((el) => {
-			if(el.getAttribute('id') == `card-${indexCard}`){
-				el.classList.add(`${cardActiveClass}` , 'animate__fadeOutLeft');
-				cardParent.append(el);
-			} else {
-				el.classList.remove(`${cardActiveClass}` , 'animate__fadeOutLeft');
-			}
-		});
-
 		indexCard++;
-		
-		if(indexCard == countCard){
-			indexCard = 0;	
+		if (indexCard >= countCard) {
+			cards[indexCard -1].classList.add(cardActiveClass);
+			indexCard = 0;
+			cards[indexCard].classList.remove(cardActiveClass);
+		} else { // Иначе
+			// Удаляем класс block предыдущему слайду
+			cards[indexCard-1].classList.remove(cardActiveClass);
+			// Добавляем класс block следующему слайду
+			cards[indexCard].classList.add(cardActiveClass);
 		}
+
 
 		timerCard = setTimeout(changeCard, TIMER_VALUE);
 	}
 
-	// changeCard();
+	changeCard();
 
 
 	//! при клике сбрасываем интервал и начинаем слайдер с места клика
@@ -96,15 +94,16 @@ window.addEventListener('load', ()=>{
 		//! Через интервал меняем слайдер
 		timer = setTimeout(changeSlider, TIMER_VALUE);
 	}
-
-
+	
+	
 	//! скрываем/показываем header при скролле
-	document.addEventListener('wheel', function(e) {
-		if(e.deltaY < 0 && window.pageYOffset > 730){
+	document.addEventListener('scroll', () => {
+		if(lastScrollPage > window.pageYOffset && window.pageYOffset > 750){
 			header.classList.add(`${headerActiveClass}`);
 		} else {
 			header.classList.remove(`${headerActiveClass}`);
 		}
+		lastScrollPage = window.pageYOffset;
 	});
 
 
