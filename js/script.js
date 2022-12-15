@@ -11,11 +11,10 @@ window.addEventListener('load', ()=>{
 	const titleSliderEl = document.querySelector('.slider__count', 'span');
 	const sliderBarFirst = document.querySelector('.slider__bar-first');
 	const sliderBarSecond = document.querySelector('.slider__bar-second');
-	const cards = document.querySelector('.cards__items');
-	const card = document.querySelectorAll('.cards__item');
+	const cards = document.querySelectorAll('.cards__item');
 
 	const countSlides = indicators.length;
-	const countCard = card.length;
+	const countCard = cards.length;
 	
 	const headerActiveClass = 'header--active';
 	const indicatorActiveClass = 'slider__indicator--active';
@@ -25,11 +24,35 @@ window.addEventListener('load', ()=>{
 	const cardActiveClass = 'cards__item--active';
 
 	let none = 'd-none';
+	let block = 'd-block';
 	let activeId = 'active';
 	let indexSlider = 1;
 	let indexCard = 0;
 	let timer = null;
 	let timerCard = null;
+
+
+	function changeCard () {
+		let cardParent = document.querySelector('.cards__items');
+		cards.forEach((el) => {
+			if(el.getAttribute('id') == `card-${indexCard}`){
+				el.classList.add(`${cardActiveClass}` , 'animate__fadeOutLeft');
+				cardParent.append(el);
+			} else {
+				el.classList.remove(`${cardActiveClass}` , 'animate__fadeOutLeft');
+			}
+		});
+
+		indexCard++;
+		
+		if(indexCard == countCard){
+			indexCard = 0;	
+		}
+
+		timerCard = setTimeout(changeCard, TIMER_VALUE);
+	}
+
+	// changeCard();
 
 
 	//! при клике сбрасываем интервал и начинаем слайдер с места клика
@@ -47,7 +70,7 @@ window.addEventListener('load', ()=>{
 	function changeSlider() {
 		sliderBarFirst.classList.toggle(`${sliderBarFirstActive}`);
 		sliderBarSecond.classList.toggle(`${sliderBarSecondActive}`);
-	//! Меняем индикаторы слайдера
+		//! Меняем индикаторы слайдера
 		indicators.forEach((el) => {
 			if (el.getAttribute('id') == indexSlider) {
 				el.classList.add(`${indicatorActiveClass}`);
@@ -55,7 +78,7 @@ window.addEventListener('load', ()=>{
 				el.classList.remove(`${indicatorActiveClass}`);
 			}
 		});
-	//! Меняем слайдеры
+		//! Меняем слайдеры
 		slides.forEach((el) => {
 			if (el.getAttribute('id') == `slide-${indexSlider}`) {
 				el.classList.add(`${sliderActiveClass}`);
@@ -63,16 +86,17 @@ window.addEventListener('load', ()=>{
 				el.classList.remove(`${sliderActiveClass}`);
 			}
 		});
-	//! Меняем счетчик
+		//! Меняем счетчик
 		titleSliderEl.textContent = `${indexSlider}/${countSlides}`;
 		indexSlider++;
 		
 		if (indexSlider > countSlides) {
 			indexSlider = 1;
 		}
-	//! Через интервал меняем слайдер
+		//! Через интервал меняем слайдер
 		timer = setTimeout(changeSlider, TIMER_VALUE);
 	}
+
 
 	//! скрываем/показываем header при скролле
 	document.addEventListener('wheel', function(e) {
