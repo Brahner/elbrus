@@ -11,7 +11,6 @@ window.addEventListener('load', ()=>{
 	const titleSliderEl = document.querySelector('.slider__count', 'span');
 	const sliderBarFirst = document.querySelector('.slider__bar-first');
 	const sliderBarSecond = document.querySelector('.slider__bar-second');
-	const cards = document.querySelectorAll('.cards__item');
 
 	const countSlides = indicators.length;
 	
