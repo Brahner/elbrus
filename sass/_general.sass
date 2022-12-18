@@ -43,7 +43,6 @@
 			transform: rotate(45deg)
 		&:nth-child(2)
 			transform: rotate(-45deg)
-.navigate
 .menu
 	&__items
 		width: 100%
@@ -148,7 +147,7 @@
 		background-color: $main-color
 		&--active
 			width: 100%
-			transition: width 3s
+			transition: width 3s linear
 	&__bar-second
 		position: absolute
 		height: 4px
@@ -156,7 +155,7 @@
 		background-color: $main-color
 		&--active
 			width: 100%
-			transition: width 3s
+			transition: width 3s linear
 .features
 	padding-top: 120px
 	+shadow
@@ -202,6 +201,8 @@
 			opacity: 1
 			& ~ .active
 				opacity: 0.5
+	& .owl-dots
+		display: none
 	&__wrap
 		padding-top: 40px
 	&__count
@@ -362,8 +363,6 @@
 		top: -100%
 	to 
 		top: 0
-
-
 
 
 

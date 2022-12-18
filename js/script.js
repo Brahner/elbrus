@@ -65,7 +65,7 @@ window.addEventListener('load', ()=>{
 			indexSlider = 1;
 		}
 		//! Через интервал меняем слайдер
-		timer = setTimeout(changeSlider, TIMER_VALUE);
+		timer = setTimeout(changeSlider, TIMER);
 	}
 	
 	
@@ -104,46 +104,51 @@ window.addEventListener('load', ()=>{
 	changeSlider();
 });
 
-const TIMER_VALUE = 3000;
+const TIMER = 4000;
+const ELEMENT_TIME = 700;
+const PROGRESS_TIME = (TIMER - ELEMENT_TIME - 100) / 1000;
 
-function startProgressCards() {
-	$(".cards__loader_bar").css({
-		width: "100%",
-		transition: "width 2.2s linear"
-	});
-}
-
-function resetProgressCards() {
-	$(".cards__loader_bar").css({
-		width: 0,
-		transition: "width 0s"
-	});
-}
 
 $(document).ready(function(){
-	const cards = $('.cards');
-	$(cards).find('#card').owlCarousel({
+	const card = $('#card');
+	const progress = $(".cards__loader_bar");
+
+	card.owlCarousel({
 		loop: true,
-		autoplayTimeout: TIMER_VALUE,
-		autoplaySpeed: 700,
+		autoplayTimeout: TIMER,
+		autoplaySpeed: ELEMENT_TIME,
 		autoplay: true,
-		// items: 2,
 		margin: 20,
 		autoWidth: true,
-		dots: false,
 		nav:true,
 		onInitialized: startProgressCards,
 		onTranslate: resetProgressCards,
-		onTranslated: counter
+		onTranslated: startProgressCards
 	});
-
-	function counter(e) {
-		let index = e.item.index - 1;
-		let total = e.item.count;
-		if(index > total) {
-			index = index - total;
-		}
-		$(cards).find('.cards__count').html(index + '/' + total);
-		startProgressCards();
+	
+	function startProgressCards() {
+		progress.css({
+			width: "100%",
+			transition: `width ${PROGRESS_TIME}s linear`
+		});
+		counterCard();
 	}
+	
+	function resetProgressCards() {
+		progress.css({
+			width: 0,
+			transition: "width 0s"
+		});
+	}
+	
+	function counterCard() {
+		const indexTotal = $('.owl-dot').length;
+		let index = $('.owl-dot.active').index();
+		$('.cards__count').html(`${index + 1}/${indexTotal}`);
+	}
+	
+	card.on('changed.owl.carousel', function() {
+		card.trigger('stop.owl.autoplay');
+		card.trigger('play.owl.autoplay');
+	});
 });
