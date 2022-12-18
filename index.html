@@ -10,6 +10,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="stylesheet" href="./css/owl.carousel.min.css">
+	<link rel="stylesheet" href="./css/owl.theme.default.min.css">
 	<link rel="stylesheet" href="./css/style.min.css">
 	<title>Эльбрусская Прохлада</title>
 </head>
@@ -132,47 +134,45 @@
 						<div class="about__wrap">
 							<h2 class="about__title">Немного о нас</h2>
 							<div class="about__desc">
-								ООО "Эльбрусская прохлада"- отптовые продажи безалкогольных напитков от производителя. Широкий ассортимент лимонадов, минеральной воды,разных сементов. Артезианская питьевая вода,добывается из скважины глубиной 230 м. Автоматизированная система розлива исключает любые загрязнения в процессе производства, а отсутствие поблизости крупных предприятий и сельхозугодий гарантирует чистоту добываемой воды. 
+								ООО "Эльбрусская прохлада"- отптовые продажи безалкогольных напитков от производителя. Широкий ассортимент лимонадов, минеральной воды, разных сементов. Артезианская питьевая вода,добывается из скважины глубиной 230 м. Автоматизированная система розлива исключает любые загрязнения в процессе производства, а отсутствие поблизости крупных предприятий и сельхозугодий гарантирует чистоту добываемой воды. 
 							</div>
 						</div>
 					</div>
 					<!-- cards -->
-					<div class="col col-lg-6">
-						<div class="cards overflow-hidden">
-							<div class="cards__wrap d-flex justify-content-between align-items-center">
-								<div class="cards__count me-3">1/4</div>
-								<div class="cards__loader"></div>
-								<div class="cards__btn d-flex justify-content-center align-items-center ms-3">
-									<img src="./img/icons/arrow-left.svg" alt="">
-								</div>
-								<div class="cards__btn d-flex justify-content-center align-items-center ms-3">
-									<img src="./img/icons/arrow-rigth.svg" alt="">
+					<div class="col col-lg-6 ps-0">
+						<div class="cards">
+							<div class="cards__wrap d-flex justify-content-start align-items-center">
+								<div class="cards__count me-3" data-name="count">1/4</div>
+								<div class="cards__loader">
+									<div class="cards__loader_bar"></div>
 								</div>
 							</div>
-							<div class="cards__items d-flex justify-content-between">
-								<div class="cards__item" id="card-0">
-									<img class="cards__img" src="./img/icons/discount.svg" alt="">
-									<p class="cards__text">
-										0 Индивидуальные скидки в зависимости от объема покупки
-									</p>
-								</div>
-								<div class="cards__item" id="card-1">
-									<img class="cards__img" src="./img/icons/discount.svg" alt="">
-									<p class="cards__text">
-										1 Индивидуальные скидки в зависимости от объема покупки
-									</p>
-								</div>
-								<div class="cards__item" id="card-2">
-									<img class="cards__img" src="./img/icons/discount.svg" alt="">
-									<p class="cards__text">
-										2 Индивидуальные скидки в зависимости от объема покупки
-									</p>
-								</div>
-								<div class="cards__item" id="card-3">
-									<img class="cards__img" src="./img/icons/discount.svg" alt="">
-									<p class="cards__text">
-										3 Индивидуальные скидки в зависимости от объема покупки
-									</p>
+							<div class="cards__items">
+								<div class="owl-carousel" id="card">
+									<div class="cards__item" id="card-0">
+										<img class="cards__img" src="./img/icons/discount.svg" alt="">
+										<p class="cards__text">
+											0 Индивидуальные скидки в зависимости от объема покупки
+										</p>
+									</div>
+									<div class="cards__item" id="card-1">
+										<img class="cards__img" src="./img/icons/discount.svg" alt="">
+										<p class="cards__text">
+											1 Индивидуальные скидки в зависимости от объема покупки
+										</p>
+									</div>
+									<div class="cards__item" id="card-2">
+										<img class="cards__img" src="./img/icons/discount.svg" alt="">
+										<p class="cards__text">
+											2 Индивидуальные скидки в зависимости от объема покупки
+										</p>
+									</div>
+									<div class="cards__item" id="card-3">
+										<img class="cards__img" src="./img/icons/discount.svg" alt="">
+										<p class="cards__text">
+											3 Индивидуальные скидки в зависимости от объема покупки
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -399,7 +399,9 @@
 		</div>
 	</footer>
 
-	<script src="./js/script_clone.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+	<script src="./js/owl.carousel.min.js"></script>
+	<script src="./js/script.js"></script>
 </body>
 
 </html>

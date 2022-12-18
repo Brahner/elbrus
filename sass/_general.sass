@@ -171,15 +171,39 @@
 		color: $main-color
 	&__desc
 		padding-right: 80px
-		margin-top: 106px
+		margin-top: 60px
 		font-weight: 400
 		font-size: 14px
 		line-height: 25px
 .cards
 	padding-bottom: 20px
+	& .owl-nav 
+		position: absolute
+		top: -104px
+		right: 0
+		& button
+			height: 43px
+			width: 43px
+			border-radius: 50%
+			& span
+				display: none
+			&:nth-child(1)
+				background: url('../img/icons/arrow-left.svg') center (center / 25px) no-repeat
+				border: 2px solid $main-color
+			&:nth-child(2)
+				margin-left: 20px
+				background: url('../img/icons/arrow-rigth.svg') center (center / 25px) no-repeat
+				border: 2px solid $main-color
+	& .owl-item
+		opacity: 0.5
+
+	& .owl-stage
+		& > .active
+			opacity: 1
+			& ~ .active
+				opacity: 0.5
 	&__wrap
-		position: relative
-		padding-top: 26px
+		padding-top: 40px
 	&__count
 		font-family: geometria
 		font-size: 15px
@@ -189,31 +213,20 @@
 		width: 70%
 		max-width: 485px
 		background-color: $grey-color-active
-	&__btn
-		height: 43px
-		width: 43px
-		border: 2px solid $main-color
-		border-radius: 50%
-		cursor: pointer
+		&_bar
+			width: 0%
+			max-width: 100%
+			height: 100%
+			background-color: $main-color
 	&__items
 		margin-top: 70px
-		transition: all 0.7s ease 0s
-		// width: 3100px
-		// transform: translateX(-930px)
-		// transform: translateX(-1240px)
-		// transform: translateX(-1550px)
-		// transform: translateX(-1860px)
 	&__item
-		position: relative
-		min-width: 295px
-		height: 265px
+		width: 295px
+		margin: 20px 0 20px
 		padding: 30px 20px 38px
-		margin: 0 10px
 		+box-shadow
-		&--active
-
 	&__img
-		width: 86px
+		max-width: 86px
 		height: auto
 	&__text
 		font-weight: 600

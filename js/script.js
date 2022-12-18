@@ -1,5 +1,4 @@
 window.addEventListener('load', ()=>{
-	const TIMER_VALUE = 3000;
 	
 	const header = document.querySelector('.header');
 	const burger = document.querySelector('.burger');
@@ -11,7 +10,6 @@ window.addEventListener('load', ()=>{
 	const titleSliderEl = document.querySelector('.slider__count', 'span');
 	const sliderBarFirst = document.querySelector('.slider__bar-first');
 	const sliderBarSecond = document.querySelector('.slider__bar-second');
-	const cards = document.querySelectorAll('.cards__item');
 
 	const countSlides = indicators.length;
 	
@@ -104,4 +102,48 @@ window.addEventListener('load', ()=>{
 	});
 
 	changeSlider();
+});
+
+const TIMER_VALUE = 3000;
+
+function startProgressCards() {
+	$(".cards__loader_bar").css({
+		width: "100%",
+		transition: "width 2.2s linear"
+	});
+}
+
+function resetProgressCards() {
+	$(".cards__loader_bar").css({
+		width: 0,
+		transition: "width 0s"
+	});
+}
+
+$(document).ready(function(){
+	const cards = $('.cards');
+	$(cards).find('#card').owlCarousel({
+		loop: true,
+		autoplayTimeout: TIMER_VALUE,
+		autoplaySpeed: 700,
+		autoplay: true,
+		// items: 2,
+		margin: 20,
+		autoWidth: true,
+		dots: false,
+		nav:true,
+		onInitialized: startProgressCards,
+		onTranslate: resetProgressCards,
+		onTranslated: counter
+	});
+
+	function counter(e) {
+		let index = e.item.index - 1;
+		let total = e.item.count;
+		if(index > total) {
+			index = index - total;
+		}
+		$(cards).find('.cards__count').html(index + '/' + total);
+		startProgressCards();
+	}
 });
