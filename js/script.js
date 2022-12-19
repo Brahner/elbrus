@@ -54,9 +54,7 @@ const PROGRESS_TIME = (TIMER - ELEMENT_TIME - 100) / 1000;
 
 $(document).ready(function(){
 	const slider = $('#slider');
-	const card = $('#card');
-	const progressCard = $(".cards__loader_bar");
-	const progressSlider = $(".slider__loader_bar");
+	const card = $('#cards');
 
 	slider.owlCarousel({
 		loop: true,
@@ -65,37 +63,11 @@ $(document).ready(function(){
 		smartSpeed: ELEMENT_TIME,
 		autoplay: true,
 		items: 1,
-		onInitialized: startProgressSlider,
-		onTranslate: resetProgressSlider,
-		onTranslated: startProgressSlider
+		onInitialized: startProgressBar,
+		onTranslate: resetProgressBar,
+		onTranslated: startProgressBar
 	});
-
-	function startProgressSlider() {
-		progressSlider.css({
-			width: "100%",
-			transition: `width ${PROGRESS_TIME}s linear`
-		});
-		counterSlider();
-	}
 	
-	function resetProgressSlider() {
-		progressSlider.css({
-			width: 0,
-			transition: "width 0s"
-		});
-	}
-
-	function counterSlider() {
-		const indexTotal = $('#slider>.owl-dots>.owl-dot').length;
-		let index = $('#slider>.owl-dots>.active').index();
-		$('.slider__count').html(`${index + 1}/${indexTotal}`);
-	}
-
-	slider.on('changed.owl.carousel', function() {
-		slider.trigger('stop.owl.autoplay');
-		slider.trigger('play.owl.autoplay');
-	});
-
 	card.owlCarousel({
 		loop: true,
 		autoplayTimeout: TIMER,
@@ -105,31 +77,45 @@ $(document).ready(function(){
 		margin: 20,
 		autoWidth: true,
 		nav:true,
-		onInitialized: startProgressCards,
-		onTranslate: resetProgressCards,
-		onTranslated: startProgressCards
+		onInitialized: startProgressBar,
+		onTranslate: resetProgressBar,
+		onTranslated: startProgressBar
 	});
-	
-	function startProgressCards() {
-		progressCard.css({
+
+	function startProgressBar(event) {
+		let parent = $(event.target).parent();
+		let progressBar = $(parent).siblings().find('[class$="_bar"]');
+		$(progressBar).css({
 			width: "100%",
 			transition: `width ${PROGRESS_TIME}s linear`
 		});
-		counterCard();
+		counter(parent);
 	}
 	
-	function resetProgressCards() {
-		progressCard.css({
+	function resetProgressBar(event) {
+		let parent = $(event.target).parent(); 
+		let progressBar = $(parent).siblings().find('[class$="_bar"]');
+		$(progressBar).css({
 			width: 0,
 			transition: "width 0s"
 		});
 	}
 
-	function counterCard() {
-		const indexTotal = $('#card>.owl-dots>.owl-dot').length;
-		let index = $('#card>.owl-dots>.active').index();
-		$('.cards__count').html(`${index + 1}/${indexTotal}`);
+	function counter(parent) {
+		let elemCount = $(parent).siblings('[class$="__count"]');
+		if(elemCount.length === 0){
+			elemCount = $(parent).siblings().find('[class$="__count"]');
+		}
+		let indexTotal = $(parent).find('.owl-dots>.owl-dot').length;
+		let index = $(parent).find('.owl-dots>.active').index();
+		$(elemCount).html(`${index + 1}/${indexTotal}`);
+
 	}
+
+	slider.on('changed.owl.carousel', function() {
+		slider.trigger('stop.owl.autoplay');
+		slider.trigger('play.owl.autoplay');
+	});
 	
 	card.on('changed.owl.carousel', function() {
 		card.trigger('stop.owl.autoplay');
