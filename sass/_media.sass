@@ -41,7 +41,7 @@
 			padding-right: 20px
 	.cards
 		&__wrap
-			padding-top: 20px
+			padding-top: 30px
 		&__loader
 			width: 60%
 	.price
@@ -61,6 +61,9 @@
 	.about
 		&__desc
 			margin-top: 36px
+	.cards
+		&__loader
+			width: 70%
 	.price
 		&__bg
 			background-position: right 50% top 200%
@@ -148,11 +151,15 @@
 		&__title
 			font-size: 32px
 	.cards
-		&__btn
-			width: 36px
-			height: 36px
 		&__img
 			width: 76px
+		&__loader
+			width: 60%
+		& .owl-nav
+			top: -100px
+			& button
+				width: 36px
+				height: 36px
 	.price
 		&__bg
 			background-size: 60%
@@ -197,7 +204,6 @@
 		&__item
 			&_link
 				font-size: 24px
-		
 	.burger
 		width: 18px
 		height: 12px
@@ -225,12 +231,19 @@
 		&__item
 			min-width: 255px
 			height: 240px
+		&__loader
+			width: 50%
 		&__img
 			width: 66px
 		&__text
 			font-size: 16px
 			margin-top: 16px
 			line-height: 1.5
+		& .owl-nav
+			top: -80px
+			& button
+				&:nth-child(2)
+					margin-left: 15px
 	.price
 		&__form
 			margin-top: 30px
@@ -258,11 +271,11 @@
 	.slider
 		&__item
 			height: 235px
-		&__indicators
+		& .owl-dots
 			height: 130px
-		&__indicator
-			width: 10px
-			height: 10px
+			& .owl-dot
+				width: 10px
+				height: 10px
 	.features
 		padding-top: 42px
 	.about
@@ -277,6 +290,8 @@
 			width: 45%
 		&__items
 			margin-top: 22px
+		& .owl-nav
+			top: -52px
 	.price
 		&__bg
 			background-position: right 0 top -50%

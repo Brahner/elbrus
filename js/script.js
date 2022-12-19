@@ -5,69 +5,13 @@ window.addEventListener('load', ()=>{
 	const overlay = document.querySelector('.overlay');
 	const navigate = document.querySelector('.navigate');
 	const close = document.querySelector('.close');
-	const indicators = document.querySelectorAll('.slider__indicator');
-	const slides = document.querySelectorAll('.slider__item');
-	const titleSliderEl = document.querySelector('.slider__count', 'span');
-	const sliderBarFirst = document.querySelector('.slider__bar-first');
-	const sliderBarSecond = document.querySelector('.slider__bar-second');
 
-	const countSlides = indicators.length;
-	
 	const headerActiveClass = 'header--active';
-	const indicatorActiveClass = 'slider__indicator--active';
-	const sliderActiveClass = 'slider__item--active';
-	const sliderBarFirstActive = 'slider__bar-first--active';
-	const sliderBarSecondActive = 'slider__bar-second--active';
 
 	let none = 'd-none';
 	let activeId = 'active';
-	let indexSlider = 1;
-	let timer = null;
 	let lastScrollPage;
 
-
-	//! при клике сбрасываем интервал и начинаем слайдер с места клика
-	indicators.forEach((el) => {
-		el.addEventListener('click', (e) => {
-			indexSlider = +e.target.id;
-			if(timer){
-				clearTimeout(timer);
-			}
-			changeSlider();
-		});
-	});
-
-
-	function changeSlider() {
-		sliderBarFirst.classList.toggle(`${sliderBarFirstActive}`);
-		sliderBarSecond.classList.toggle(`${sliderBarSecondActive}`);
-		//! Меняем индикаторы слайдера
-		indicators.forEach((el) => {
-			if (el.getAttribute('id') == indexSlider) {
-				el.classList.add(`${indicatorActiveClass}`);
-			} else {
-				el.classList.remove(`${indicatorActiveClass}`);
-			}
-		});
-		//! Меняем слайдеры
-		slides.forEach((el) => {
-			if (el.getAttribute('id') == `slide-${indexSlider}`) {
-				el.classList.add(`${sliderActiveClass}`);
-			} else {
-				el.classList.remove(`${sliderActiveClass}`);
-			}
-		});
-		//! Меняем счетчик
-		titleSliderEl.textContent = `${indexSlider}/${countSlides}`;
-		indexSlider++;
-		
-		if (indexSlider > countSlides) {
-			indexSlider = 1;
-		}
-		//! Через интервал меняем слайдер
-		timer = setTimeout(changeSlider, TIMER);
-	}
-	
 	
 	//! скрываем/показываем header при скролле
 	document.addEventListener('scroll', () => {
@@ -100,9 +44,8 @@ window.addEventListener('load', ()=>{
 			navigate.classList.toggle(`${none}`);
 		});
 	});
-
-	changeSlider();
 });
+
 
 const TIMER = 4000;
 const ELEMENT_TIME = 700;
@@ -110,13 +53,54 @@ const PROGRESS_TIME = (TIMER - ELEMENT_TIME - 100) / 1000;
 
 
 $(document).ready(function(){
+	const slider = $('#slider');
 	const card = $('#card');
-	const progress = $(".cards__loader_bar");
+	const progressCard = $(".cards__loader_bar");
+	const progressSlider = $(".slider__loader_bar");
+
+	slider.owlCarousel({
+		loop: true,
+		autoplayTimeout: TIMER,
+		autoplaySpeed: ELEMENT_TIME,
+		smartSpeed: ELEMENT_TIME,
+		autoplay: true,
+		items: 1,
+		onInitialized: startProgressSlider,
+		onTranslate: resetProgressSlider,
+		onTranslated: startProgressSlider
+	});
+
+	function startProgressSlider() {
+		progressSlider.css({
+			width: "100%",
+			transition: `width ${PROGRESS_TIME}s linear`
+		});
+		counterSlider();
+	}
+	
+	function resetProgressSlider() {
+		progressSlider.css({
+			width: 0,
+			transition: "width 0s"
+		});
+	}
+
+	function counterSlider() {
+		const indexTotal = $('#slider>.owl-dots>.owl-dot').length;
+		let index = $('#slider>.owl-dots>.active').index();
+		$('.slider__count').html(`${index + 1}/${indexTotal}`);
+	}
+
+	slider.on('changed.owl.carousel', function() {
+		slider.trigger('stop.owl.autoplay');
+		slider.trigger('play.owl.autoplay');
+	});
 
 	card.owlCarousel({
 		loop: true,
 		autoplayTimeout: TIMER,
 		autoplaySpeed: ELEMENT_TIME,
+		smartSpeed: ELEMENT_TIME,
 		autoplay: true,
 		margin: 20,
 		autoWidth: true,
@@ -127,7 +111,7 @@ $(document).ready(function(){
 	});
 	
 	function startProgressCards() {
-		progress.css({
+		progressCard.css({
 			width: "100%",
 			transition: `width ${PROGRESS_TIME}s linear`
 		});
@@ -135,15 +119,15 @@ $(document).ready(function(){
 	}
 	
 	function resetProgressCards() {
-		progress.css({
+		progressCard.css({
 			width: 0,
 			transition: "width 0s"
 		});
 	}
-	
+
 	function counterCard() {
-		const indexTotal = $('.owl-dot').length;
-		let index = $('.owl-dot.active').index();
+		const indexTotal = $('#card>.owl-dots>.owl-dot').length;
+		let index = $('#card>.owl-dots>.active').index();
 		$('.cards__count').html(`${index + 1}/${indexTotal}`);
 	}
 	

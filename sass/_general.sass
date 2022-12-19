@@ -113,23 +113,27 @@
 	&__items
 		overflow: hidden
 	&__item
-		display: none
 		height: 480px
-		&--active
-			display: block
-	&__indicators
+	& .owl-dots
 		height: 195px
+		display: flex
+		flex-direction: column
+		justify-content: space-between
 		position: absolute
 		right: 0
 		top: 35%
-	&__indicator
-		width: 15px
-		height: 15px
-		background-color: $grey-color
-		border-radius: 50%
-		cursor: pointer
-		&--active
+		& .owl-dot
+			width: 15px
+			height: 15px
+			background-color: $grey-color
+			border-radius: 50%
+		& .active
 			background-color: $grey-color-active
+	& .owl-stage
+		& .owl-item
+			opacity: 0.2
+		& .active
+			opacity: 1
 	&__count
 		position: absolute
 		top: 10%
@@ -140,22 +144,11 @@
 		height: 4px
 		background-color: $grey-color-active
 		margin-top: 38px
-	&__bar-first
-		position: absolute
-		height: 4px
-		width: 0%
-		background-color: $main-color
-		&--active
-			width: 100%
-			transition: width 3s linear
-	&__bar-second
-		position: absolute
-		height: 4px
-		width: 0%
-		background-color: $main-color
-		&--active
-			width: 100%
-			transition: width 3s linear
+		&_bar
+			width: 0%
+			max-width: 100%
+			height: 100%
+			background-color: $main-color
 .features
 	padding-top: 120px
 	+shadow
@@ -193,9 +186,6 @@
 				margin-left: 20px
 				background: url('../img/icons/arrow-rigth.svg') center (center / 25px) no-repeat
 				border: 2px solid $main-color
-	& .owl-item
-		opacity: 0.5
-
 	& .owl-stage
 		& > .active
 			opacity: 1
@@ -222,7 +212,7 @@
 	&__items
 		margin-top: 70px
 	&__item
-		width: 295px
+		width: 297px
 		margin: 20px 0 20px
 		padding: 30px 20px 38px
 		+box-shadow
@@ -323,7 +313,6 @@
 	&__title
 		+title-big
 		color: $main-color
-	&__items
 	&__item
 		width: 220px
 		margin-top: 95px
@@ -363,7 +352,3 @@
 		top: -100%
 	to 
 		top: 0
-
-
-
-
