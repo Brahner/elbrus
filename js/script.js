@@ -1,61 +1,59 @@
-window.addEventListener('load', ()=>{
-	
-	const header = document.querySelector('.header');
-	const burger = document.querySelector('.burger');
-	const overlay = document.querySelector('.overlay');
-	const navigate = document.querySelector('.navigate');
-	const close = document.querySelector('.close');
+/*globals $:false */
+$(document).ready(function(){
+	const TIMER = 4000;
+	const ELEMENT_TIME = 700;
+	const PROGRESS_TIME = (TIMER - ELEMENT_TIME - 100) / 1000;
+	const header = $('.header');
+	const overlay = $('.overlay');
+	const navigate = $('.navigate');
+	const close = $('.close');
+	const slider = $('#slider');
+	const card = $('#cards');
 
-	const headerActiveClass = 'header--active';
+	const headerActive = 'header--active';
+	const none = 'd-none';
+	const activeId = 'active';
 
-	let none = 'd-none';
-	let activeId = 'active';
 	let lastScrollPage;
 
-	
 	//! скрываем/показываем header при скролле
-	document.addEventListener('scroll', () => {
-		if(lastScrollPage > window.pageYOffset && window.pageYOffset > 759){
-			header.classList.add(`${headerActiveClass}`);
+	$(document).scroll(() => {
+		let scrollCurrent = $(window).scrollTop();
+
+		if(scrollCurrent > 759 && scrollCurrent < lastScrollPage && $(navigate).attr('id') != activeId){
+			$(header).addClass(headerActive);
 		} else {
-			header.classList.remove(`${headerActiveClass}`);
+			$(header).removeClass(headerActive);
 		}
-		lastScrollPage = window.pageYOffset;
+
+		lastScrollPage = scrollCurrent;
 	});
 
 
 	//! мобильное меню
-	header.addEventListener('click', function(e) {
-		if(e.target == burger){
-			overlay.classList.toggle(`${none}`);
-			navigate.classList.toggle(`${none}`);
-			navigate.setAttribute('id', activeId);
+	$(header).click((e) => {
+		let elem = $(e.target);
+
+		if(elem.is('.burger')){
+			$(overlay).toggleClass(none);
+			$(navigate).toggleClass(none);
+			$(navigate).attr('id', activeId);
 		}
 
-		if(e.target != burger && e.target != navigate && navigate.id === activeId){
-			navigate.removeAttribute('id');
-			overlay.classList.toggle(`${none}`);
-			navigate.classList.toggle(`${none}`);
+		if(elem.is(':not(.burger)') && elem.is(':not(.navigate)') && $(navigate).attr('id') === activeId){
+			$(navigate).removeAttr('id');
+			$(overlay).toggleClass(none);
+			$(navigate).toggleClass(none);
 		}
 
-		close.addEventListener('click', () => {
-			navigate.removeAttribute('id');
-			overlay.classList.toggle(`${none}`);
-			navigate.classList.toggle(`${none}`);
+		$(close).click(() => {
+			$(navigate).removeAttr('id');
+			$(overlay).toggleClass(none);
+			$(navigate).toggleClass(none);
 		});
 	});
-});
 
-
-const TIMER = 4000;
-const ELEMENT_TIME = 700;
-const PROGRESS_TIME = (TIMER - ELEMENT_TIME - 100) / 1000;
-
-
-$(document).ready(function(){
-	const slider = $('#slider');
-	const card = $('#cards');
-
+	//! карусель картинок
 	slider.owlCarousel({
 		loop: true,
 		autoplayTimeout: TIMER,
@@ -68,6 +66,7 @@ $(document).ready(function(){
 		onTranslated: startProgressBar
 	});
 	
+	//! карусель карточек
 	card.owlCarousel({
 		loop: true,
 		autoplayTimeout: TIMER,
@@ -82,6 +81,7 @@ $(document).ready(function(){
 		onTranslated: startProgressBar
 	});
 
+	//! Меняем индикаторы карусели
 	function startProgressBar(event) {
 		let parent = $(event.target).parent();
 		let progressBar = $(parent).siblings().find('[class$="_bar"]');
@@ -101,17 +101,20 @@ $(document).ready(function(){
 		});
 	}
 
+	//! Меняем счетчик
 	function counter(parent) {
+		let indexTotal = $(parent).find('.owl-dots>.owl-dot').length;
+		let index = $(parent).find('.owl-dots>.active').index();
 		let elemCount = $(parent).siblings('[class$="__count"]');
+
 		if(elemCount.length === 0){
 			elemCount = $(parent).siblings().find('[class$="__count"]');
 		}
-		let indexTotal = $(parent).find('.owl-dots>.owl-dot').length;
-		let index = $(parent).find('.owl-dots>.active').index();
-		$(elemCount).html(`${index + 1}/${indexTotal}`);
 
+		$(elemCount).html(`${index + 1}/${indexTotal}`);
 	}
 
+	//! переключаем карусель, так же сбрасываетя прогресс карусели
 	slider.on('changed.owl.carousel', function() {
 		slider.trigger('stop.owl.autoplay');
 		slider.trigger('play.owl.autoplay');
