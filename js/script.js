@@ -7,12 +7,17 @@ $(document).ready(function(){
 	const overlay = $('.overlay');
 	const navigate = $('.navigate');
 	const close = $('.close');
+	const headerBtn = $('.header__btn');
+	const popup = $('.popup');
+	const popupWrap = $('.popup__wrap');
 	const slider = $('#slider');
 	const card = $('#cards');
 
 	const headerActive = 'header--active';
+	const popupActive = 'popup__wrap--active';
 	const none = 'd-none';
 	const activeId = 'active';
+	const scrollLimit = 760;
 
 	let lastScrollPage;
 
@@ -20,7 +25,7 @@ $(document).ready(function(){
 	$(document).scroll(() => {
 		let scrollCurrent = $(window).scrollTop();
 
-		if(scrollCurrent > 759 && scrollCurrent < lastScrollPage && $(navigate).attr('id') != activeId){
+		if(scrollCurrent > scrollLimit && scrollCurrent < lastScrollPage && $(navigate).attr('id') != activeId){
 			$(header).addClass(headerActive);
 		} else {
 			$(header).removeClass(headerActive);
@@ -29,6 +34,20 @@ $(document).ready(function(){
 		lastScrollPage = scrollCurrent;
 	});
 
+	//! показываем popup
+	$(headerBtn).click(() => {
+		$(popup).toggleClass(none);
+		$(popupWrap).toggleClass(popupActive);
+	});
+
+	//! скрываем popup
+	$(popup).click((e) => {
+		let elem = $(e.target);
+		if(!elem.is(popupWrap) && !elem.parents().is(popupWrap)){
+			$(popup).toggleClass(none);
+			$(popupWrap).toggleClass(popupActive);
+		}
+	});
 
 	//! мобильное меню
 	$(header).click((e) => {

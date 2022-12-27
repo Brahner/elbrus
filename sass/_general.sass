@@ -49,18 +49,14 @@
 		list-style: none
 		padding-left: 0
 		margin-bottom: 0
-	&__item
 		font-weight: 600
 		font-size: 14px
-		&_link
+		& a
 			color: $grey-color
 			&:hover
 				color: $main-color
-			&--white
-				color: $white-color
-				&:hover
-					color: $white-color
-					opacity: .8
+	&__item--active
+		text-decoration: underline
 .header .menu
 	width: 50%
 .header__phone
@@ -349,8 +345,55 @@
 		&:hover
 			color: $white-color
 			opacity: .8
+	& .menu 
+		&__items
+			& a
+				color: $white-color
+				&:hover
+					color: $white-color
+					opacity: .8
+.popup
+	position: fixed
+	left: 0
+	top: 0
+	z-index: 101
+	width: 100%
+	height: 100%
+	background-color: $main-color-clear
+	&__wrap
+		position: fixed
+		right: 50%
+		top: 50%
+		transform: translate(50%,-50%)
+		background-color: $white-color
+		padding: 30px 70px 50px 30px
+		animation: popup-show .5s ease
+	&__title
+		font-size: 48px
+		font-weight: 700
+		color: $main-color
+		margin-bottom: 22px
+	&__input
+		height: 40px
+		padding: 10px 20px 15px
+		margin: 15px 0
+		border: 1px solid $grey-color-active
+		font-weight: 400
+		font-size: 14px
+		color: $grey-color
+		&:focus
+			outline: none
+	&__btn
+		max-width: 290px
+		margin-top: 35px
+		+btn
 @keyframes header-show
 	from
 		top: -100%
 	to 
 		top: 0
+@keyframes popup-show
+	from
+		top: 0
+	to 
+		top: 50%

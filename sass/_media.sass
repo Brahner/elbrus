@@ -16,10 +16,10 @@
 	.header .menu
 		width: 100%
 		margin-bottom: 30px
-		&__item
-			&_link
+		&__items
+			font-size: 30px
+			& a
 				color: $white-color
-				font-size: 30px
 				&:hover
 					color: $white-color
 					opacity: .8
@@ -52,6 +52,9 @@
 	.products
 		&__item
 			height: 250px
+	.popup
+		&__title
+			font-size: 42px
 @media (max-width: 991px)
 	.promo
 		padding-bottom: 65px
@@ -100,6 +103,13 @@
 	.footer
 		&__text
 			text-align: center
+	.popup
+		&__wrap
+			padding: 30px
+		&__title
+			font-size: 32px
+		&__btn
+			max-width: 200px
 @media (max-width: 767px)
 	.logo
 		&__link
@@ -123,7 +133,12 @@
 	.partners
 		padding-bottom: 75px
 	.contacts
-		padding: 43px 0 26px 
+		padding: 43px 0 26px
+	.popup
+		&__wrap
+			width: 60%
+		&__title
+			font-size: 28px
 @media (max-width: 575px)
 	.header
 		&__btn
@@ -201,8 +216,8 @@
 			&_link
 				font-size: 24px
 	.header .menu
-		&__item
-			&_link
+		&__items
+			& a
 				font-size: 24px
 	.burger
 		width: 18px
@@ -265,6 +280,12 @@
 	.maps
 		&__item
 			height: 350px
+	.popup
+		&__wrap
+			width: 90%
+			padding: 20px
+		&__title
+			font-size: 26px
 @media (max-width: 320px)
 	.header
 		&__btn
@@ -300,3 +321,6 @@
 	.maps
 		&__item
 			height: 290px
+	.popup
+		&__btn
+			max-width: 100%
