@@ -14,7 +14,6 @@ $(document).ready(function(){
 	const card = $('#cards');
 
 	const headerActive = 'header--active';
-	const popupActive = 'popup__wrap--active';
 	const none = 'd-none';
 	const activeId = 'active';
 	const scrollLimit = 760;
@@ -37,7 +36,6 @@ $(document).ready(function(){
 	//! показываем popup
 	$(headerBtn).click(() => {
 		$(popup).toggleClass(none);
-		$(popupWrap).toggleClass(popupActive);
 	});
 
 	//! скрываем popup
@@ -45,7 +43,6 @@ $(document).ready(function(){
 		let elem = $(e.target);
 		if(!elem.is(popupWrap) && !elem.parents().is(popupWrap)){
 			$(popup).toggleClass(none);
-			$(popupWrap).toggleClass(popupActive);
 		}
 	});
 
